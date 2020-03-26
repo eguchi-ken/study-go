@@ -22,7 +22,7 @@ var m2 = map[string]Vertex{
 }
 
 // ↑と同じ意味。value の型が Vertex とわかっているので一部省略できる。
-var m = map[string]Vertex{
+var m3 = map[string]Vertex{
 	"Bell Labs": {40.68433, -74.39967},
 	"Google":    {37.42202, -122.08408},
 }
@@ -42,5 +42,17 @@ func main() {
 	// キーから value を取り出す。
 	fmt.Println(m["Bell Labs"])
 
-	fmt.Println(m2)
+	printValueIfExist(m2, "Google")
+	printValueIfExist(m2, "Google!!")
+}
+
+func printValueIfExist(m0 map[string]Vertex, k string) {
+	// キーに対する値が存在するかどうかは代入時の2番目でチェックできる
+	element, ok := m0[k]
+
+	if ok {
+		fmt.Printf("キー %s の値は %v です！\n", k, element)
+	} else {
+		fmt.Printf("キー %s の値はありません！\n", k)
+	}
 }
